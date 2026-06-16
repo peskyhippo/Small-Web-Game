@@ -88,7 +88,8 @@ const player = {
             let inRadius = (this.sideLength * 0.95) / 2;
 
             ctx.shadowColor = "#fff";
-            ctx.shadowBlur = (75 * this.spiritSize * this.sideLength) / this.sideLength;
+            ctx.shadowBlur =
+                (75 * this.spiritSize * this.sideLength) / this.sideLength;
             ctx.strokeStyle = "#fff";
             ctx.fillStyle = "#fff";
 
@@ -96,8 +97,14 @@ const player = {
 
             ctx.moveTo(this.pos.x - inRadius, this.pos.y + inRadius);
             ctx.lineTo(this.pos.x + inRadius, this.pos.y + inRadius);
-            ctx.lineTo(this.pos.x + inRadius + this.vel.x, this.pos.y - inRadius);
-            ctx.lineTo(this.pos.x - inRadius + this.vel.x, this.pos.y - inRadius);
+            ctx.lineTo(
+                this.pos.x + inRadius + this.vel.x,
+                this.pos.y - inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x - inRadius + this.vel.x,
+                this.pos.y - inRadius,
+            );
             ctx.closePath();
 
             ctx.fill();
@@ -107,7 +114,8 @@ const player = {
             let inRadius = (this.sideLength * this.spiritSize * 0.95) / 2;
 
             ctx.shadowColor = "#fff";
-            ctx.shadowBlur = (75 * this.spiritSize * this.sideLength) / this.sideLength;
+            ctx.shadowBlur =
+                (75 * this.spiritSize * this.sideLength) / this.sideLength;
             ctx.strokeStyle = "#fff";
             ctx.fillStyle = "#fff";
 
@@ -137,8 +145,14 @@ const player = {
 
             ctx.moveTo(this.pos.x - inRadius, this.pos.y + inRadius);
             ctx.lineTo(this.pos.x + inRadius, this.pos.y + inRadius);
-            ctx.lineTo(this.pos.x + inRadius + this.vel.x, this.pos.y - inRadius);
-            ctx.lineTo(this.pos.x - inRadius + this.vel.x, this.pos.y - inRadius);
+            ctx.lineTo(
+                this.pos.x + inRadius + this.vel.x,
+                this.pos.y - inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x - inRadius + this.vel.x,
+                this.pos.y - inRadius,
+            );
             ctx.closePath();
 
             ctx.fill();
@@ -152,10 +166,30 @@ const player = {
 
             ctx.beginPath();
 
-            ctx.moveTo(this.pos.x - inRadius + ((1 - this.spiritSize) * this.vel.x) / 2, this.pos.y + inRadius);
-            ctx.lineTo(this.pos.x + inRadius + ((1 - this.spiritSize) * this.vel.x) / 2, this.pos.y + inRadius);
-            ctx.lineTo(this.pos.x + inRadius + ((1 + this.spiritSize) * this.vel.x) / 2, this.pos.y - inRadius);
-            ctx.lineTo(this.pos.x - inRadius + ((1 + this.spiritSize) * this.vel.x) / 2, this.pos.y - inRadius);
+            ctx.moveTo(
+                this.pos.x -
+                    inRadius +
+                    ((1 - this.spiritSize) * this.vel.x) / 2,
+                this.pos.y + inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x +
+                    inRadius +
+                    ((1 - this.spiritSize) * this.vel.x) / 2,
+                this.pos.y + inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x +
+                    inRadius +
+                    ((1 + this.spiritSize) * this.vel.x) / 2,
+                this.pos.y - inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x -
+                    inRadius +
+                    ((1 + this.spiritSize) * this.vel.x) / 2,
+                this.pos.y - inRadius,
+            );
             ctx.closePath();
 
             ctx.fill();
@@ -168,10 +202,26 @@ const player = {
 
             ctx.beginPath();
 
-            ctx.moveTo(this.pos.x - inRadius /* + ((1 - this.spiritSize) * this.vel.x) / 2 */, this.pos.y + inRadius);
-            ctx.lineTo(this.pos.x + inRadius /* + ((1 - this.spiritSize) * this.vel.x) / 2 */, this.pos.y + inRadius);
-            ctx.lineTo(this.pos.x + inRadius /* + ((1 + this.spiritSize) * this.vel.x) / 2 */, this.pos.y - inRadius);
-            ctx.lineTo(this.pos.x - inRadius /* + ((1 + this.spiritSize) * this.vel.x) / 2 */, this.pos.y - inRadius);
+            ctx.moveTo(
+                this.pos.x -
+                    inRadius /* + ((1 - this.spiritSize) * this.vel.x) / 2 */,
+                this.pos.y + inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x +
+                    inRadius /* + ((1 - this.spiritSize) * this.vel.x) / 2 */,
+                this.pos.y + inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x +
+                    inRadius /* + ((1 + this.spiritSize) * this.vel.x) / 2 */,
+                this.pos.y - inRadius,
+            );
+            ctx.lineTo(
+                this.pos.x -
+                    inRadius /* + ((1 + this.spiritSize) * this.vel.x) / 2 */,
+                this.pos.y - inRadius,
+            );
             ctx.closePath();
 
             ctx.fill();
@@ -183,7 +233,10 @@ const player = {
 
         const shrinkSpeed = 1.4;
 
-        if ((!keyStates.shift && this.spiritState === 2) || (keyStates.shift && this.spiritState === 0)) {
+        if (
+            (!keyStates.shift && this.spiritState === 2) ||
+            (keyStates.shift && this.spiritState === 0)
+        ) {
             this.spiritState = 1;
         }
 
@@ -223,7 +276,10 @@ const player = {
             const a = 30;
             this.vel.x = a * Math.tanh(this.vel.x / (1.25 * a));
 
-            let nextPos = new Vector2(this.vel.x * dTMult, this.vel.y * dTMult).add(this.pos);
+            let nextPos = new Vector2(
+                this.vel.x * dTMult,
+                this.vel.y * dTMult,
+            ).add(this.pos);
             // let nextPos = structuredClone(this.pos);
             let inRadius = this.sideLength / 2;
 
@@ -254,53 +310,58 @@ const player = {
                     const dist = (this.sideLength + squareSize) / 2;
 
                     if (
-                        gameState.blocks[row][col] &&
-                        (col + 0.5) * squareSize - dist <= nextPos.x &&
-                        nextPos.x <= (col + 0.5) * squareSize + dist &&
-                        (row + 0.5) * squareSize - dist <= nextPos.y &&
-                        nextPos.y <= (row + 0.5) * squareSize + dist
+                        !(
+                            gameState.blocks[row][col] &&
+                            (col + 0.5) * squareSize - dist <= nextPos.x &&
+                            nextPos.x <= (col + 0.5) * squareSize + dist &&
+                            (row + 0.5) * squareSize - dist <= nextPos.y &&
+                            nextPos.y <= (row + 0.5) * squareSize + dist
+                        )
+                    )
+                        continue;
+
+                    // Distances from center of block to center of player
+
+                    // Left of block = negative
+                    let distX = nextPos.x - (col + 0.5) * squareSize;
+
+                    // Above block = negative
+                    let distY = nextPos.y - (row + 0.5) * squareSize;
+
+                    // let distX = this.pos.x - (col + 0.5) * squareSize;
+                    // let distY = this.pos.y - (row + 0.5) * squareSize;
+
+                    let above = gameState.blocks[row - 1]?.[col] || 0,
+                        left = gameState.blocks[row]?.[col - 1] || 0,
+                        right = gameState.blocks[row]?.[col + 1] || 0,
+                        under = gameState.blocks[row + 1]?.[col] || 0;
+
+                    if (
+                        ((distY <= 0 && distX - distY <= 0 && left) ||
+                            -distY >= Math.abs(distX) ||
+                            (distY <= 0 && distY + distX >= 0 && right)) &&
+                        !above
                     ) {
-                        // Distances from center of block to center of player
-
-                        // Left of block = negative
-                        let distX = nextPos.x - (col + 0.5) * squareSize;
-
-                        // Above block = negative
-                        let distY = nextPos.y - (row + 0.5) * squareSize;
-
-                        // let distX = this.pos.x - (col + 0.5) * squareSize;
-                        // let distY = this.pos.y - (row + 0.5) * squareSize;
-
-                        let above = gameState.blocks[row - 1]?.[col] || 0,
-                            left = gameState.blocks[row]?.[col - 1] || 0,
-                            right = gameState.blocks[row]?.[col + 1] || 0,
-                            under = gameState.blocks[row + 1]?.[col] || 0;
-
-                        if (
-                            ((distY <= 0 && distX - distY <= 0 && left) ||
-                                -distY >= Math.abs(distX) ||
-                                (distY <= 0 && distY + distX >= 0 && right)) &&
-                            !above
-                        ) {
-                            this.vel.y = this.vel.y < 0 ? this.vel.y : 0;
-                            nextPos.y = (row + 0.5) * squareSize - dist;
-                            this.jumpFrames = 4;
-                        } else if (-distX > Math.abs(distY) && !left) {
-                            // Left section
-                            this.vel.x = this.vel.x < 0 ? this.vel.x : 0;
-                            nextPos.x = (col + 0.5) * squareSize - dist;
-                        } else if (distX > Math.abs(distY) && !right) {
-                            // Right section
-                            this.vel.x = this.vel.x > 0 ? this.vel.x : 0;
-                            nextPos.x = (col + 0.5) * squareSize + dist;
-                        } else if (
-                            ((distY >= 0 && distX + distY <= 0 && left) || distY >= Math.abs(distX) || (distY >= 0 && distX - distY >= 0 && right)) &&
-                            !under
-                        ) {
-                            // Bottom section
-                            this.vel.y = this.vel.y > 0 ? this.vel.y : 0;
-                            nextPos.y = (row + 0.5) * squareSize + dist;
-                        }
+                        this.vel.y = this.vel.y < 0 ? this.vel.y : 0;
+                        nextPos.y = (row + 0.5) * squareSize - dist;
+                        this.jumpFrames = 4;
+                    } else if (-distX > Math.abs(distY) && !left) {
+                        // Left section
+                        this.vel.x = this.vel.x < 0 ? this.vel.x : 0;
+                        nextPos.x = (col + 0.5) * squareSize - dist;
+                    } else if (distX > Math.abs(distY) && !right) {
+                        // Right section
+                        this.vel.x = this.vel.x > 0 ? this.vel.x : 0;
+                        nextPos.x = (col + 0.5) * squareSize + dist;
+                    } else if (
+                        ((distY >= 0 && distX + distY <= 0 && left) ||
+                            distY >= Math.abs(distX) ||
+                            (distY >= 0 && distX - distY >= 0 && right)) &&
+                        !under
+                    ) {
+                        // Bottom section
+                        this.vel.y = this.vel.y > 0 ? this.vel.y : 0;
+                        nextPos.y = (row + 0.5) * squareSize + dist;
                     }
                 }
             }
@@ -347,7 +408,10 @@ const player = {
 
             this.vel.r = a * Math.tanh(this.vel.r / (1.25 * a));
 
-            let nextPos = new Vector2(this.vel.x * dTMult, this.vel.y * dTMult).add(this.pos);
+            let nextPos = new Vector2(
+                this.vel.x * dTMult,
+                this.vel.y * dTMult,
+            ).add(this.pos);
             let inRadius = (this.sideLength * (this.spiritSize + 1)) / 4;
 
             // Border Collisions
@@ -374,7 +438,10 @@ const player = {
 
             for (let row = 0; row < gameState.blocks.length; row++) {
                 for (let col = 0; col < gameState.blocks[row].length; col++) {
-                    const dist = ((this.sideLength * (this.spiritSize + 1)) / 2 + squareSize) / 2;
+                    const dist =
+                        ((this.sideLength * (this.spiritSize + 1)) / 2 +
+                            squareSize) /
+                        2;
 
                     if (
                         !gameState.blocks[row][col] &&
@@ -415,7 +482,9 @@ const player = {
 
 // TMP
 await (async () => {
-    let [metaData, ...data] = (await (await fetch("/singleplayer/level.txt")).text()).split("\n");
+    let [metaData, ...data] = (
+        await (await fetch("/singleplayer/level.txt")).text()
+    ).split("\n");
 
     data = data.map((v) => v.split(""));
 
@@ -425,7 +494,7 @@ await (async () => {
     gameState.blocks = new Array(height).fill(0).map((_, row) =>
         new Array(width).fill(0).map(
             (_, col) =>
-                ({ " ": 0, "#": 1, "P": 0 }[
+                ({ " ": 0, "#": 1, P: 0 })[
                     ((c) => {
                         if (c === "P") {
                             player.pos.x = (col + 0.5) * squareSize;
@@ -433,8 +502,8 @@ await (async () => {
                         }
                         return c;
                     })(data[row][col] || " ")
-                ])
-        )
+                ],
+        ),
     );
     canvas.width = gameState.width * squareSize;
     canvas.height = gameState.height * squareSize;
@@ -446,7 +515,11 @@ await (async () => {
  * Updates canvas class based on how big the canvas is relative to it's container
  */
 function canvasResizeHandler() {
-    pageDiv.className = pageDiv.clientWidth / canvas.width < pageDiv.clientHeight / canvas.height ? "width-scaling" : "height-scaling";
+    pageDiv.className =
+        pageDiv.clientWidth / canvas.width <
+        pageDiv.clientHeight / canvas.height
+            ? "width-scaling"
+            : "height-scaling";
 }
 
 (async () => {
@@ -479,7 +552,6 @@ function canvasResizeHandler() {
 })();
 
 let pT = -Infinity;
-
 requestAnimationFrame(function animate(cT) {
     let dT = cT - pT;
 
@@ -492,7 +564,12 @@ requestAnimationFrame(function animate(cT) {
         for (let row = 0; row < gameState.blocks.length; row++) {
             for (let col = 0; col < gameState.blocks[row].length; col++) {
                 if (gameState.blocks[row][col]) {
-                    ctx.fillRect(col * squareSize, row * squareSize, squareSize, squareSize);
+                    ctx.fillRect(
+                        col * squareSize,
+                        row * squareSize,
+                        squareSize,
+                        squareSize,
+                    );
                 }
             }
         }
